@@ -1,35 +1,44 @@
 import React, { useState } from 'react';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
-import useFirebase from '../../../hooks/useFirebase';
-import FileBase64 from 'react-file-base64';
 
 
 const AddProduct = () => {
-    const { user, error, handleLoginWithEmail } = useFirebase()
-    const [loginData, setLoginData] = useState({});
+    const [productData, setProductData] = useState({});
 
-    const location = useLocation();
-    const history = useHistory();
 
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
-        const newLogin = { ...loginData };
-        newLogin[field] = value;
-        setLoginData(newLogin);
-        console.log(newLogin);
+        const newProduct = { ...productData };
+        newProduct[field] = value;
+        setProductData(newProduct);
     }
-    const handleLoginSubmit = e => {
-        handleLoginWithEmail(loginData.email, loginData.password, location, history)
+    const handleProductSubmit = e => {
+        fetch('https://stormy-coast-38483.herokuapp.com/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(productData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('added a new product')
+                    console.log(data);
+                }
+            })
+
         e.preventDefault();
     }
+
     return (
         <div>
-            <form onSubmit={handleLoginSubmit} className='w-50 m-auto pt-4 '>
-                <FileBase64
-                    multiple={false}
+            <form onSubmit={handleProductSubmit} className='w-50 m-auto pt-4 '>
+                <input
+                    type='url'
                     name='image'
                     onBlur={handleOnBlur}
+                    placeholder='Image url'
                 />
                 <input
                     onBlur={handleOnBlur}
@@ -51,11 +60,6 @@ const AddProduct = () => {
                     placeholder="Description" />
                 <button type="submit" className="btn btn-primary">Add to Products</button>
 
-                {
-                    error && <div class="alert alert-danger" role="alert">
-                        {error}
-                    </div>
-                }
             </form>
         </div>
     );

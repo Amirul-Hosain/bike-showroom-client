@@ -23,12 +23,24 @@ const Register = () => {
             setIncorrect("Password and Retype Password doesn't matched");
             return
         }
-
         handleCreateAccountWithEmail(registerData.email, registerData.password, registerData.name);
+
+        fetch('https://stormy-coast-38483.herokuapp.com/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(registerData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     }
     return (
         <div>
             <form onSubmit={handleRegisterSubmit} className='w-25 m-auto pt-4 '>
+                <h4 style={{ marginBottom: '15px' }}>Register</h4>
                 <div className="mb-3">
                     <input
                         onBlur={handleOnBlur}
@@ -63,6 +75,11 @@ const Register = () => {
                 {
                     error && <div class="alert alert-danger" role="alert">
                         {error}
+                    </div>
+                }
+                {
+                    user.email && <div class="alert alert-danger" role="alert">
+                        <p>Registration Successfully!!</p>
                     </div>
                 }
             </form>

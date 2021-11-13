@@ -1,0 +1,20 @@
+
+
+.dash-link{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    width: 100%;
+    line-height: 40px;
+}
+
+.logout{
+    text-decoration: none;
+    color: rgb(117, 99, 99);
+    font-weight: 500;
+    background-image: linear-gradient(to right, rgb(74, 222, 44), lightgreen);
+    padding: 8px 25px;
+    border-radius: 2px;
+    box-shadow: 3px 3px 5px 3px black;
+}
+.logout:hover{color:rgb(117, 99, 99) ;}

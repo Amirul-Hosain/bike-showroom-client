@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home/Home/Home';
@@ -6,9 +5,12 @@ import About from './pages/About/About';
 import Login from './pages/Login/Login/Login';
 import Register from './pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider';
-import Products from './pages/Products/Products';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
+import Products from './pages/Product/Products/Products';
+import ProductDetail from './pages/Product/ProductDetail/ProductDetail';
+import Contact from './pages/Contact/Contact';
+
 
 function App() {
   return (
@@ -22,8 +24,14 @@ function App() {
             <Route path='/home'>
               <Home></Home>
             </Route>
-            <PrivateRoute path='/products'>
+            <Route path='/contact'>
+              <Contact></Contact>
+            </Route>
+            <Route path='/products'>
               <Products></Products>
+            </Route>
+            <PrivateRoute path='/productDetail/:id'>
+              <ProductDetail></ProductDetail>
             </PrivateRoute>
             <Route path='/login'>
               <Login></Login>

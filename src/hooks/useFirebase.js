@@ -30,10 +30,6 @@ const useFirebase = () => {
             .then(result => {
                 setUser(user)
                 setError('');
-                // // save user to the database
-                // saveUser(email, name, 'POST');
-
-                // send name to firebase after creation
                 const newUser = { email, displayName: name };
                 setUser(newUser);
                 updateProfile(auth.currentUser, {
@@ -85,19 +81,14 @@ const useFirebase = () => {
             })
     }
 
+    useEffect(() => {
+        const url = `https://stormy-coast-38483.herokuapp.com/users/${user.email}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
-    // const saveUser = (email, displayName, method) => {
-    //     const user = { email, displayName };
 
-    //     fetch('http://localhost:5000/users', {
-    //         method: method,
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then(res => res.json())
-    // }
 
 
     return {

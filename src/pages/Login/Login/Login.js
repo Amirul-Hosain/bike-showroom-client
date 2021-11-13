@@ -23,8 +23,9 @@ const Login = () => {
         e.preventDefault();
     }
     return (
-        <div>
+        <div style={{ marginTop: '10%' }}>
             <form onSubmit={handleLoginSubmit} className='w-25 m-auto pt-4 '>
+                <h4 style={{ marginBottom: '15px' }}>Login</h4>
                 <div className="mb-3">
                     <input
                         onBlur={handleOnBlur}

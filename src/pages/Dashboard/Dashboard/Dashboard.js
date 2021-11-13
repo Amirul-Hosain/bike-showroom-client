@@ -1,6 +1,7 @@
 import React from 'react';
+import './Dashboard.css';
 import {
-    Switch, Route, Link, useParams, useRouteMatch, NavLink
+    Switch, Route, Link, useRouteMatch
 } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,13 +13,19 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AddProduct from '../AddProduct/AddProduct';
-import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import useAuth from '../../../hooks/useAuth';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AdminRoute from '../AdminRoute/AdminRoute';
+import MyOrder from '../MyOrder/MyOrder';
+import ManageProduct from '../ManageProduct/ManageProduct';
+import ManageOrder from '../ManageOrder/ManageOrder';
+import Review from '../Review/Review';
+import Payment from '../Payment/Payment';
 
 const drawerWidth = 240;
 
 const Dashboard = (props) => {
-    const { user, handleLogOut } = useAuth();
+    const { user, handleLogOut, admin } = useAuth();
     let { path, url } = useRouteMatch();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -27,15 +34,25 @@ const Dashboard = (props) => {
         setMobileOpen(!mobileOpen);
     };
     const drawer = (
-        <div style={{ backgroundColor: 'lightcyan', height: '100vh' }}>
+        <div style={{ backgroundImage: 'linear-gradient(  lightgreen, green)', height: '100vh' }}>
             <List>
-                <ul>
-                    <Link to={`${url}/addProduct`}>Add Product</Link><br />
-                    <Link to={`${url}/makeAdmin`}>Make Admin</Link><br />
+                <ul style={{ marginTop: '25%' }}>
+                    <Link className='dash-link' to={`${url}/payment`}>Payment</Link><br />
+                    <Link className='dash-link' to={`${url}/MyOrder`}>My Orders</Link><br />
+                    <Link className='dash-link' to={`${url}/review`}>Review us</Link><br />
+                    {admin &&
+                        <Box>
+                            <Link className='dash-link' to={`${url}/manageOrder`}>Manage Orders</Link><br />
+                            <Link className='dash-link' to={`${url}/addProduct`}>Add Product</Link><br />
+                            <Link className='dash-link' to={`${url}/manageProduct`}>Manage Products</Link><br />
+                            <Link className='dash-link' to={`${url}/makeAdmin`}>Make Admin</Link>
+                        </Box>
+                    }
                 </ul>
-                <ul style={{ marginTop: '150%' }}>
+
+                <ul style={{ marginTop: '80%' }}>
                     {user?.email &&
-                        <Link to='/' onClick={handleLogOut}>Log out</Link>
+                        <Link to='/' className='logout' onClick={handleLogOut}><i class="fas fa-sign-out-alt"></i> Log out</Link>
                     }
                 </ul>
 
@@ -45,14 +62,15 @@ const Dashboard = (props) => {
 
     const container = window !== undefined ? () => window().document.body : undefined;
     return (
-        <Box sx={{ display: 'flex', backgroundColor: 'red' }}>
+        <Box sx={{ display: 'flex', backgroundColor: 'rgb(229, 254, 223)', paddingBottom: '10%' }}>
             <CssBaseline />
+
             <AppBar
                 position="fixed"
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
-                    backgroundColor: 'coral'
+                    backgroundColor: 'rgb(229, 254, 223)',
                 }}
             >
                 <Toolbar>
@@ -65,8 +83,8 @@ const Dashboard = (props) => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                    <Typography variant="h6" style={{ color: 'black' }}>
+                        Your Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -110,12 +128,27 @@ const Dashboard = (props) => {
 
                 <Box sx={{ flexGrow: 1 }}>
                     <Switch>
+                        <Route exact path={`${path}/payment`}>
+                            <Payment></Payment>
+                        </Route>
+                        <Route exact path={`${path}/MyOrder`}>
+                            <MyOrder></MyOrder>
+                        </Route>
+                        <Route exact path={`${path}/review`}>
+                            <Review></Review>
+                        </Route>
                         <Route exact path={`${path}/addProduct`}>
                             <AddProduct></AddProduct>
                         </Route>
-                        <Route exact path={`${path}/makeAdmin`}>
+                        <AdminRoute exact path={`${path}/makeAdmin`}>
                             <MakeAdmin></MakeAdmin>
-                        </Route>
+                        </AdminRoute>
+                        <AdminRoute exact path={`${path}/manageProduct`}>
+                            <ManageProduct></ManageProduct>
+                        </AdminRoute>
+                        <AdminRoute exact path={`${path}/manageOrder`}>
+                            <ManageOrder></ManageOrder>
+                        </AdminRoute>
                     </Switch>
                 </Box>
             </Box>

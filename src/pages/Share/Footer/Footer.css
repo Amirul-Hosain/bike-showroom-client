@@ -1,0 +1,46 @@
+
+.footer{
+    background-image: linear-gradient( lightgreen,green);
+    margin-top: 100px;
+    /* background-color: #0A1929; */
+    margin-bottom: -20px;
+}
+.footer-container{
+    color: whitesmoke;
+}
+.footer-detail{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px 0px;
+    margin: auto;
+}
+
+.footer-logo p{
+    margin-top: 20px;
+    font-size: 18px;
+}
+.footer-contact h2{
+    margin-bottom: 30px;
+}
+.footer-contact i{
+    font-size: 22px;
+    margin-right: 5px;
+}
+.footer-contact p{
+    font-size: 20px ;
+}
+.social-icon{
+    margin-top: 20px;
+    color: rgb(230, 230, 230);
+    font-size: 45px;
+    margin-right: 10px;
+}
+
+/* copy right */
+.copy-right{
+    color: whitesmoke;
+    text-align: center;
+    padding: 20px 0px;
+    font-size: 15px;
+}
