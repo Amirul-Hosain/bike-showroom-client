@@ -22,7 +22,7 @@ import ManageOrder from '../ManageOrder/ManageOrder';
 import Review from '../Review/Review';
 import Payment from '../Payment/Payment';
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 const Dashboard = (props) => {
     const { user, handleLogOut, admin } = useAuth();
@@ -37,9 +37,13 @@ const Dashboard = (props) => {
         <div style={{ backgroundImage: 'linear-gradient(  lightgreen, green)', height: '100vh' }}>
             <List>
                 <ul style={{ marginTop: '25%' }}>
-                    <Link className='dash-link' to={`${url}/payment`}>Payment</Link><br />
-                    <Link className='dash-link' to={`${url}/MyOrder`}>My Orders</Link><br />
-                    <Link className='dash-link' to={`${url}/review`}>Review us</Link><br />
+                    {!admin &&
+                        < Box >
+                            <Link className='dash-link' to={`${url}/payment`}>Payment</Link><br />
+                            <Link className='dash-link' to={`${url}/MyOrder`}>My Orders</Link><br />
+                            <Link className='dash-link' to={`${url}/review`}>Review us</Link>
+                        </Box>
+                    }
                     {admin &&
                         <Box>
                             <Link className='dash-link' to={`${url}/manageOrder`}>Manage Orders</Link><br />
@@ -57,7 +61,7 @@ const Dashboard = (props) => {
                 </ul>
 
             </List>
-        </div>
+        </div >
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
@@ -128,12 +132,16 @@ const Dashboard = (props) => {
 
                 <Box sx={{ flexGrow: 1 }}>
                     <Switch>
-                        <Route exact path={`${path}/payment`}>
-                            <Payment></Payment>
-                        </Route>
+                        {!admin && <Route exact path={`${path}`}>
+                            <MyOrder></MyOrder>
+                        </Route>}
                         <Route exact path={`${path}/MyOrder`}>
                             <MyOrder></MyOrder>
                         </Route>
+                        <Route exact path={`${path}/payment`}>
+                            <Payment></Payment>
+                        </Route>
+
                         <Route exact path={`${path}/review`}>
                             <Review></Review>
                         </Route>
@@ -146,6 +154,9 @@ const Dashboard = (props) => {
                         <AdminRoute exact path={`${path}/manageProduct`}>
                             <ManageProduct></ManageProduct>
                         </AdminRoute>
+                        {admin && <AdminRoute exact path={`${path}`}>
+                            <ManageOrder></ManageOrder>
+                        </AdminRoute>}
                         <AdminRoute exact path={`${path}/manageOrder`}>
                             <ManageOrder></ManageOrder>
                         </AdminRoute>

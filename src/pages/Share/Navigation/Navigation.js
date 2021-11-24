@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navigation.css';
 import { NavLink } from 'react-router-dom';
 import bikeLogo from '../../../../src/images/logo/bike-logo.png'
@@ -6,6 +6,16 @@ import useAuth from '../../../hooks/useAuth';
 
 const Navigation = () => {
     const { user, handleLogOut } = useAuth();
+    const [orders, setOrders] = useState("");
+
+    useEffect(() => {
+        fetch(`https://stormy-coast-38483.herokuapp.com/addOrders/${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setOrders(data)
+                console.log(data);
+            });
+    }, [user?.email]);
     return (
         <nav className="navbar navbar-expand-lg navbar-light navigation-container">
             <div className="container container-fluid">
@@ -35,6 +45,10 @@ const Navigation = () => {
                                 {user.email &&
                                     <NavLink style={{ color: 'rgb(34, 172, 57)', textDecoration: 'none', marginRight: '10px', fontSize: '20px', fontWeight: '500' }} to='/dashboard'>Dashboard</NavLink>}
                             </ul>
+                        </div>
+                        <div style={{ display: 'flex' }}>
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>{orders.length}</p>
                         </div>
                         <div style={{ display: 'flex' }}>
                             {user.email && <p style={{ color: 'rgb(34, 172, 57)', fontSize: '20px', marginRight: '10px' }}>{user.displayName}</p>}

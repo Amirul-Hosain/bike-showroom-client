@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import './ManageProduct.css'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+
+
 
 const ManageProduct = () => {
     const [products, setProducts] = useState([]);
@@ -13,6 +18,7 @@ const ManageProduct = () => {
         const proceed = window.confirm('Are You Sure, You Want to Delete this product?');
         if (proceed) {
             const url = `https://stormy-coast-38483.herokuapp.com/products/${id}`;
+            console.log(id, url);
             fetch(url, {
                 method: 'DELETE'
             })
@@ -32,17 +38,30 @@ const ManageProduct = () => {
     return (
         <div>
             <h2>this is manage products.</h2>
-            <div style={{ margin: '10px 15px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
-                {
-                    products.map(product => <div style={{ margin: '10px 5px', width: '300px' }}>
-                        <img width='300' height='200' src={product.image} alt="" />
-                        <h4>{product.productName}</h4>
-                        <p>{product.price}</p>
-                        <p>{product.description}</p>
-                        <p onClick={handleDeleteProduct} style={{ color: 'red', float: 'right', cursor: 'pointer', marginRight: '10px' }}>Delete</p>
-                    </div>)
-                }
-            </div>
+
+
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={2} style={{ margin: 'auto' }}>
+                    {
+                        products.map(product => <Grid
+                            className='product-container'>
+                            <img className='product-image' src={product.image} alt="" />
+                            <h4>{product.productName}</h4>
+                            <p>{product.price}</p>
+                            <p style={{ width: '280px' }}>{product.description}</p>
+                            <p
+                                className='delete-button'
+                                onClick={() => handleDeleteProduct(product._id)}>
+                                Delete
+                            </p>
+                        </Grid>)
+                    }
+
+                </Grid>
+            </Box>
+
+            <Grid item xs={8}>
+            </Grid>
         </div>
     );
 };

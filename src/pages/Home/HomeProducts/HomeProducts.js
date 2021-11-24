@@ -11,31 +11,32 @@ const HomeProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://stormy-coast-38483.herokuapp.com/homeProducts')
+        fetch('https://stormy-coast-38483.herokuapp.com/products')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => setProducts(data.slice(0, 6)))
     }, [])
     return (
         <div style={{ marginTop: '150px' }}>
-            <Box sx={{ flexGrow: 1 }} className='products'>
+            <Box sx={{ flexGrow: 1 }}>
                 <Container>
                     <h2 style={{ fontSize: '35px', color: 'rgb(34, 172, 57)', marginBottom: '50px' }}>Our products sample</h2>
 
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} >
                         {
                             products.map(product => <Grid item xs={12} sm={6} md={4}
+                                className='home-product'
                                 style={{ margin: '20px 0px' }}
                                 key={product._Id}
                             >
-                                <img src={product.image} alt="" />
+                                <img className='product-image' src={product.image} alt="" />
                                 <Grid style={{ textAlign: 'center' }}>
-                                    <h6 style={{ marginTop: '15px' }}>{product.productName}</h6>
+                                    <h5 style={{ marginTop: '15px' }}>{product.productName}</h5>
                                     <Link className='show-detail' to={`/productDetail/${product._id}`}>Show Details</Link>
                                 </Grid>
                             </Grid>)
                         }
-                        <Link className='see-more' to='/products'>See more</Link>
                     </Grid>
+                    <Link className='see-more' to='/products'>See more</Link>
                 </Container>
             </Box>
         </div>

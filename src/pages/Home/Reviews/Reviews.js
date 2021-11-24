@@ -1,9 +1,24 @@
 import { Container, Rating } from '@mui/material';
+import './Reviews.css';
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
+import Whirligig from 'react-whirligig'
+
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const Reviews = () => {
     const [reviews, setRiviews] = useState([]);
+    let whirligig
+    const next = () => whirligig.next()
+    const prev = () => whirligig.prev()
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    });
 
     useEffect(() => {
         fetch('https://stormy-coast-38483.herokuapp.com/reviews')
@@ -14,26 +29,36 @@ const Reviews = () => {
         <div style={{ marginTop: '150px' }}>
             <Container style={{ width: '75%', margin: 'auto' }}>
                 <h2 style={{ fontSize: '35px', color: 'rgb(34, 172, 57)', marginBottom: '25px' }}>Our client says</h2>
-                <Grid container spacing={2}>
-                    {
-                        reviews.map(review => <Grid item xs={12} sm={6} md={4}
-                            key={review._id}
-                        >
-                            <Grid style={{ width: '300px', border: '1px solid rgb(95, 204, 95)', padding: '20px 10px' }}>
-                                <h4>{review.email}</h4>
-                                <p>{review.message}</p>
-                                <Rating
-                                    initialRating={review.rate}
-                                    emptySymbol="far fa-star icon-color"
-                                    fullSymbol="fas fa-star icon-color"
-                                    readonly>
-                                </Rating>
-                            </Grid>
-                        </Grid>)
-                    }
-                </Grid>
-            </Container>
-        </div>
+                <div>
+                    <Whirligig
+                        visibleSlides={3}
+                        gutter="1em"
+                        ref={(_whirligigInstance) => { whirligig = _whirligigInstance }}
+                    >
+                        {
+                            reviews.map(review => <Grid
+                                className="review-container"
+                                key={review._id}
+                            >
+                                <div data-aos="fade-up-left">
+                                    <Grid>
+                                        <h4>{review.name}</h4>
+                                        <p>{review.message}</p>
+                                        <Rating
+                                            name="read-only"
+                                            value={review.rete}
+                                            readOnly />
+                                    </Grid>
+                                </div>
+                            </Grid>)
+                        }
+                    </Whirligig>
+                </div >
+            </Container >
+
+        </div >
+
+
     );
 };
 

@@ -1,6 +1,13 @@
 
 
-.products-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.products{
+    padding: 15px 10px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    box-shadow: 2px 5px 5px 5px gray;
+    background-color: white;
+}
+.products:hover{
+    transform:rotateY(360deg);
+    transition: transform 1.5s;
 }

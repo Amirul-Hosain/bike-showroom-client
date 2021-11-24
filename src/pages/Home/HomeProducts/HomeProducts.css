@@ -1,7 +1,20 @@
 
+.home-product{
+    padding: 10px 20px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    box-shadow: 2px 5px 5px 5px gray;
+    background-color: white;
+}
+.home-product:hover{
+    transform:rotateY(360deg);
+    transition: transform 1.5s;
+}
+
+
 
 .products{
-    width: 75%;
+    width: 80%;
     margin: auto;
 }
 .products img{
@@ -14,7 +27,7 @@
     font-size: 18px;
 }
 .see-more{
-    margin-top: 50px;
+    margin:50px 10px 0px 0px;
     color: white;
     background-image: linear-gradient(to right, rgb(39, 119, 39), rgb(95, 204, 95));
     text-decoration: none;

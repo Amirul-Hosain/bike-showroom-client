@@ -8,7 +8,7 @@ const MyOrder = () => {
     const deleteMyOrder = id => {
         const proceed = window.confirm('Are You Sure, You Want to Delete this product?');
         if (proceed) {
-            const url = `https://stormy-coast-38483.herokuapp.com/addOrders/${id}`;
+            const url = `https://stormy-coast-38483.herokuapp.com/deleteOrder/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -30,7 +30,6 @@ const MyOrder = () => {
             .then((res) => res.json())
             .then((data) => {
                 setOrders(data)
-                console.log(data);
             });
     }, [user?.email]);
     return (
@@ -42,7 +41,7 @@ const MyOrder = () => {
                         <p>{order.address}</p>
                         <p>{order.date}</p>
                         <p>{order.status}</p>
-                        <p onClick={deleteMyOrder} style={{ color: 'red', cursor: 'pointer' }}>Delete</p>
+                        <p onClick={() => deleteMyOrder(order._id)} style={{ color: 'red', cursor: 'pointer' }}>Delete</p>
                     </div>)
                 }
             </div>

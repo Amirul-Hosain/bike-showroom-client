@@ -21,7 +21,7 @@ const Products = () => {
             <Navigation></Navigation>
             <Box sx={{ flexGrow: 1 }}>
                 <Container>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} style={{ width: '90%' }}>
                         {
                             products.map(product => <Grid item xs={12} sm={6} md={4}
                                 className='products'

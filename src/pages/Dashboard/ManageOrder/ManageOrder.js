@@ -10,23 +10,27 @@ import Paper from '@mui/material/Paper';
 
 const ManageOrder = () => {
     const [orders, setOrders] = useState([]);
-
     const [status, setStatus] = useState("");
     const [orderId, setOrderId] = useState("");
 
+    console.log(status, orderId)
 
     const handleOrderId = (id) => {
         setOrderId(id);
     };
 
-    const onSubmit = (data) => {
+    const onSubmit = (e, data) => {
+        e.preventDefault();
+
         fetch(`https://stormy-coast-38483.herokuapp.com/addOrders/${orderId}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => setStatus(data));
+        console.log('clicked')
+
     };
 
     useEffect(() => {
@@ -63,8 +67,8 @@ const ManageOrder = () => {
                                 <TableCell align="center">{order.address}</TableCell>
                                 <TableCell align="center">{order.date}</TableCell>
                                 <TableCell align="center">
-                                    <form onSubmit={onSubmit}>
-                                        <select onClick={() => handleOrderId(orders._id)} >
+                                    <form onSubmit={(e) => onSubmit(e, status)}>
+                                        <select onClick={() => handleOrderId(order._id)} >
                                             <option value="pending">Pending</option>
                                             <option value="approve">approve</option>
                                             <option value="done">Done</option>
@@ -77,6 +81,9 @@ const ManageOrder = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+
+
+
         </div>
     );
 };

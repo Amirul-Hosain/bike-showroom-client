@@ -43,8 +43,9 @@ const Review = () => {
                 <input
                     onBlur={handleOnBlur}
                     type="text"
-                    name='email'
-                    defaultValue={user.email}
+                    name='name'
+                    defaultValue={user.name}
+                    placeholder='Your name'
                     className="form-control" />
                 <textarea
                     onBlur={handleOnBlur}

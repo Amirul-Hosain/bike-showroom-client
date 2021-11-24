@@ -1,0 +1,26 @@
+
+
+.product-container{
+    width: 320px;
+    margin: 15px 20px;
+    padding: 10px 20px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    box-shadow: 2px 5px 5px 5px gray;
+    background-color: white;
+}
+.product-container:hover{
+    transform:rotateY(360deg);
+    transition: transform 1.5s;
+}
+.product-image{
+    width: 280px;
+    height: 200px;
+    border-radius: 10px;
+}
+.delete-button{
+   color: red; 
+   float: right;
+    cursor: pointer;
+     margin-right: 10px;
+}
