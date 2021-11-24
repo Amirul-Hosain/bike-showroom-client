@@ -19,21 +19,20 @@ const Products = () => {
     return (
         <div>
             <Navigation></Navigation>
-            <Box sx={{ flexGrow: 1 }}>
-                <Container>
-                    <Grid container spacing={2} style={{ width: '90%' }}>
-                        {
-                            products.map(product => <Grid item xs={12} sm={6} md={4}
-                                className='products'
-                                key={product._Id}
-                            >
-                                <img width='250' height='auto' src={product.image} alt="" />
-                                <h6>{product.productName}</h6>
-                                <Link className='show-detail' to={`/productDetail/${product._id}`}>Show Details</Link>
-                            </Grid>)
-                        }
-                    </Grid>
-                </Container>
+            <Box sx={{ flexGrow: 1, marginTop: '150px' }}>
+                <Grid container spacing={2} style={{ marginLeft: '8%' }}>
+                    {
+                        products.map(product => <Grid
+                            className='product-container'>
+                            <img className='product-image' src={product.image} alt="" />
+                            <h4>{product.productName}</h4>
+                            <p>{product.price}</p>
+                            <p style={{ width: '280px' }}>{product.description}</p>
+
+                        </Grid>)
+                    }
+
+                </Grid>
             </Box>
         </div >
     );

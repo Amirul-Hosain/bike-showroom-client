@@ -17,7 +17,7 @@ const Navigation = () => {
             });
     }, [user?.email]);
     return (
-        <nav className="navbar navbar-expand-lg navbar-light navigation-container">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top navigation-container">
             <div className="container container-fluid">
                 <div><img width='100' height='80' src={bikeLogo} alt="" /></div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,14 +46,14 @@ const Navigation = () => {
                                     <NavLink style={{ color: 'rgb(34, 172, 57)', textDecoration: 'none', marginRight: '10px', fontSize: '20px', fontWeight: '500' }} to='/dashboard'>Dashboard</NavLink>}
                             </ul>
                         </div>
-                        <div style={{ display: 'flex' }}>
+                        <div style={{ display: 'flex', color: 'green', marginTop: '5px' }}>
                             <i class="fas fa-shopping-cart"></i>
-                            <p>{orders.length}</p>
+                            <p style={{ color: 'green' }}>{orders.length}</p>
                         </div>
                         <div style={{ display: 'flex' }}>
                             {user.email && <p style={{ color: 'rgb(34, 172, 57)', fontSize: '20px', marginRight: '10px' }}>{user.displayName}</p>}
                             {user?.email ?
-                                <button className='login-out' style={{ height: '30px' }} onClick={handleLogOut}>Log out</button>
+                                <button className='login-out' style={{ padding: '0px 3px 2px 3px', width: '80px' }} onClick={handleLogOut}>Log out</button>
                                 :
                                 <NavLink className='login-out' to='/login'>Login</NavLink>
                             }

@@ -56,7 +56,7 @@ const ProductDetail = () => {
     return (
         <div>
             <Navigation></Navigation>
-            <Container>
+            <Container style={{ marginTop: '150px' }}>
                 <Grid container spacing={2} style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Grid item xs={12} sm={6} md={5}>
                         <img width='320' src={details?.image} alt="" />

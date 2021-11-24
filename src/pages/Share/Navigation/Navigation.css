@@ -5,11 +5,16 @@
 }
 
 .login-out{
+    width: 75px;
+    height: 30px;
+    text-align: center;
     color: white;
     background-image: linear-gradient(to right, rgb(39, 119, 39), rgb(95, 204, 95));
     text-decoration: none;
     font-size: 18px;
-    padding: 3px 15px;
     border-radius: 2px;
     border: none;
+}
+.login-out:hover{
+    color: white;
 }

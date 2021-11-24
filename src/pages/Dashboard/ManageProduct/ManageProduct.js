@@ -59,9 +59,6 @@ const ManageProduct = () => {
 
                 </Grid>
             </Box>
-
-            <Grid item xs={8}>
-            </Grid>
         </div>
     );
 };
