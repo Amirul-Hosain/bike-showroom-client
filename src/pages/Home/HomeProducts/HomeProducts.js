@@ -17,7 +17,7 @@ const HomeProducts = () => {
     return (
         <div style={{ marginTop: '150px' }}>
             <Box sx={{ flexGrow: 1, marginTop: '150px' }}>
-                <h2 style={{ marginLeft: '8%', fontSize: '35px', color: 'rgb(34, 172, 57)', marginBottom: '50px' }}>Our products sample</h2>
+                <h2 style={{ marginLeft: '8%', fontSize: '35px', color: '#ffa500', marginBottom: '50px' }}>Our products sample</h2>
 
                 <Grid container spacing={2} style={{ width: '100%', paddingLeft: '8%', marginBottom: '50px', }}>
                     {

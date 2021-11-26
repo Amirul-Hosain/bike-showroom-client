@@ -28,7 +28,7 @@ const Products = () => {
                             <h4>{product.productName}</h4>
                             <p>{product.price}</p>
                             <p style={{ width: '280px' }}>{product.description}</p>
-
+                            <Link className='show-detail' to={`/productDetail/${product._id}`}>See Details</Link>
                         </Grid>)
                     }
 

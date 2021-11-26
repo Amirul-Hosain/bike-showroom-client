@@ -34,7 +34,9 @@ const Dashboard = (props) => {
         setMobileOpen(!mobileOpen);
     };
     const drawer = (
-        <div style={{ backgroundImage: 'linear-gradient(  lightgreen, green)', height: '100vh' }}>
+        <div style={{
+            backgroundImage: 'white', height: '100vh'
+        }}>
             <List>
                 <ul style={{ marginTop: '25%' }}>
                     {!admin &&

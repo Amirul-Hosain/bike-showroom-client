@@ -1,8 +1,7 @@
 
 .footer{
-    background-image: linear-gradient( lightgreen,green);
     margin-top: 100px;
-    /* background-color: #0A1929; */
+    background-color:rgb(27, 29, 64);
     margin-bottom: -20px;
 }
 .footer-container{
