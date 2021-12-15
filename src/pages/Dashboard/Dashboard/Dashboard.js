@@ -20,7 +20,6 @@ import MyOrder from '../MyOrder/MyOrder';
 import ManageProduct from '../ManageProduct/ManageProduct';
 import ManageOrder from '../ManageOrder/ManageOrder';
 import Review from '../Review/Review';
-import Payment from '../Payment/Payment';
 
 const drawerWidth = 220;
 
@@ -35,13 +34,12 @@ const Dashboard = (props) => {
     };
     const drawer = (
         <div style={{
-            backgroundImage: 'white', height: '100vh'
+            backgroundColor: 'rgb(229, 254, 223)', height: '100vh'
         }}>
-            <List>
+            <List >
                 <ul style={{ marginTop: '25%' }}>
                     {!admin &&
                         < Box >
-                            <Link className='dash-link' to={`${url}/payment`}>Payment</Link><br />
                             <Link className='dash-link' to={`${url}/MyOrder`}>My Orders</Link><br />
                             <Link className='dash-link' to={`${url}/review`}>Review us</Link>
                         </Box>
@@ -81,7 +79,7 @@ const Dashboard = (props) => {
             >
                 <Toolbar>
                     <IconButton
-                        color="inherit"
+                        color="success"
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
@@ -90,7 +88,7 @@ const Dashboard = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" style={{ color: 'black' }}>
-                        Your Dashboard
+                        Admin Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -139,9 +137,6 @@ const Dashboard = (props) => {
                         </Route>}
                         <Route exact path={`${path}/MyOrder`}>
                             <MyOrder></MyOrder>
-                        </Route>
-                        <Route exact path={`${path}/payment`}>
-                            <Payment></Payment>
                         </Route>
 
                         <Route exact path={`${path}/review`}>

@@ -12,6 +12,10 @@
     transition: .5;
 }
 
+.navbar-toggler{
+    color: green;
+}
+
 .login-out{
     width: 75px;
     height: 30px;

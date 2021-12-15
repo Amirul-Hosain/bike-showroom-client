@@ -40,7 +40,7 @@ const ManageOrder = () => {
     }, [])
     return (
         <div>
-            <h2>this is manage order section.</h2>
+            <h2 style={{ textAlign: 'center', margin: '30px' }}>Ordered Products</h2>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -68,12 +68,12 @@ const ManageOrder = () => {
                                 <TableCell align="center">{order.date}</TableCell>
                                 <TableCell align="center">
                                     <form onSubmit={(e) => onSubmit(e, status)}>
-                                        <select onClick={() => handleOrderId(order._id)} >
+                                        <select style={{ padding: '5px 0px', }} onClick={() => handleOrderId(order._id)} >
                                             <option value="pending">Pending</option>
                                             <option value="approve">approve</option>
-                                            <option value="done">Done</option>
+                                            <option value="done">Delivered</option>
                                         </select>
-                                        <input type="submit" />
+                                        <input style={{ border: 'none', padding: '5px 5px ', backgroundColor: 'orange' }} type="submit" />
                                     </form>
                                 </TableCell>
                             </TableRow>

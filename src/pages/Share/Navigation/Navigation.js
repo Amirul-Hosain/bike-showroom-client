@@ -30,11 +30,11 @@ const Navigation = () => {
 
     return (
         <div>
-            <nav className={navigation ? 'navbar2 navbar navbar-expand-lg fixed-top' : 'navbar navbar-expand-lg fixed-top'}>
+            <nav className={navigation ? 'navbar2 navbar navbar-expand-lg navbar-light fixed-top' : 'navbar navbar-expand-lg navbar-light fixed-top'}>
                 <div className="container container-fluid">
                     <div><img width='100' height='80' src={bikeLogo} alt="" /></div>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler" color='info' type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon " color='info' ></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>

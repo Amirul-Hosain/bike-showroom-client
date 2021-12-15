@@ -36,7 +36,7 @@ const Reviews = () => {
     return (
         <div className='review-comp' style={{ marginTop: '150px', padding: '100px 0px' }}>
             <Container style={{ width: '75%', margin: 'auto' }}>
-                <h2 style={{ fontSize: '35px', color: 'white', textAlign: 'center', marginBottom: '80px' }}>Our Client Says</h2>
+                <h2 style={{ fontSize: '35px', color: 'black', textAlign: 'center', marginBottom: '80px' }}>Our Client Says</h2>
                 <div>
                     <Slider {...settings}>
                         {reviews.map(function (review) {

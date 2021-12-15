@@ -37,8 +37,7 @@ const ManageProduct = () => {
 
     return (
         <div>
-            <h2>this is manage products.</h2>
-
+            <h2 style={{ textAlign: 'center', margin: '30px 0px' }}>Manage All Products</h2>
 
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2} style={{ margin: 'auto' }}>

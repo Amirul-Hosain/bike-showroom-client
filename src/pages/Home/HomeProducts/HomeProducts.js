@@ -10,28 +10,35 @@ const HomeProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://stormy-coast-38483.herokuapp.com/products')
+        // fetch('https://stormy-coast-38483.herokuapp.com/products')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
-            .then(data => setProducts(data.slice(0, 6)))
+            .then(data => setProducts(data.slice(0, 16)))
     }, [])
     return (
         <div style={{ marginTop: '150px' }}>
-            <Box sx={{ flexGrow: 1, marginTop: '150px' }}>
-                <h2 style={{ marginLeft: '8%', fontSize: '35px', color: '#ffa500', marginBottom: '50px' }}>Our products sample</h2>
+            <Box className='' sx={{ flexGrow: 1, marginTop: '150px' }}>
+                <h2 style={{ textAlign: 'center', fontSize: '35px', color: '#ffa500', marginBottom: '50px' }}>Our Products Collection</h2>
 
-                <Grid container spacing={2} style={{ width: '100%', paddingLeft: '8%', marginBottom: '50px', }}>
+                <div className=' home-products-all'  >
                     {
-                        products.map(product => <Grid
-                            className='product-container'>
+                        products.map(product => <div
+                            className='home-product' id='home-product-id'>
                             <img className='product-image' src={product.image} alt="" />
-                            <h4>{product.productName}</h4>
-                            <Link className='show-detail' to={`/productDetail/${product._id}`}>See Details</Link>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '25px 20px 0px 20px' }}>
+                                <div>
+                                    <h4>{product.productName}</h4>
+                                    <p>Price: {product.price}</p>
+                                </div>
+                                <div style={{ marginTop: '45px' }}>
+                                    <Link className='show-detail' to={`/productDetail/${product._id}`}>See Details</Link>
+                                </div>
+                            </div>
 
-                        </Grid>)
+                        </div>)
                     }
-
-                </Grid>
-                <Link style={{ marginLeft: '10%' }} className='see-more' to='/products'>See more</Link>
+                </div>
+                <Link style={{}} className='see-more' to='/products'>See more <i class="fas fa-long-arrow-alt-right"></i></Link>
             </Box>
 
         </div>

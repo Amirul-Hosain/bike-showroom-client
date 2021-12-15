@@ -27,8 +27,9 @@ const MakeAdmin = () => {
         e.preventDefault();
     }
     return (
-        <div>
+        <div style={{ height: '100vh', paddingTop: '5%' }}>
             <form onSubmit={handleLoginSubmit} className='w-50 m-auto pt-4 '>
+                <h4 style={{ textAlign: 'center', marginBottom: '30px' }}>Make an Admin</h4>
                 <input
                     onBlur={handleOnBlur}
                     type="email"
@@ -36,7 +37,12 @@ const MakeAdmin = () => {
                     className="form-control"
                     placeholder='Email'
                 />
-                <button type="submit" className="btn btn-primary">Make an Admin</button>
+                <button
+                    style={{
+                        padding: '5px 20px', marginTop: '10px', border: 'none', backgroundImage: 'linear-gradient( to right, tomato, orange)',
+                        borderRadius: '2px',
+                    }}
+                    type="submit">Make an Admin</button>
             </form>
         </div>
     );
