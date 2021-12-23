@@ -1,8 +1,10 @@
 import { Container, Grid } from '@mui/material';
+import './ProductDetail.css'
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import Navigation from '../../Share/Navigation/Navigation';
+import Payment from '../../../../src/pages/Payment/Payment'
 
 const ProductDetail = () => {
     const { user } = useAuth();
@@ -56,17 +58,22 @@ const ProductDetail = () => {
     return (
         <div>
             <Navigation></Navigation>
-            <Container style={{ marginTop: '150px' }}>
-                <Grid container spacing={2} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Grid item xs={12} sm={6} md={5}>
-                        <img width='320' src={details?.image} alt="" />
-                        <p>{details?.productName}</p>
-                        <p>{details?.price}</p>
-                        <p style={{ width: '70%' }}>{details?.description}</p>
-                    </Grid>
+            <Container style={{ marginTop: '150px', paddingBottom: '100px' }}>
 
-                    <Grid item xs={12} sm={6} md={6} >
-                        <form onSubmit={handleProductSubmit} className='pt-4 '>
+                <Grid style={{ display: 'flex', }}>
+
+                    <img width='350' height='280' src={details?.image} alt="" />
+                    <div style={{ display: 'flex', flexDirection: 'column', margin: '20px 0px 0px 15px' }}>
+                        <h5>{details?.productName}</h5>
+                        <p style={{ fontSize: '20px' }}>{details?.price}</p>
+                        <p style={{ width: '50%' }}>{details?.description}</p>
+                    </div>
+                </Grid>
+
+                <div>
+                    <div className='address-payment'>
+                        <form style={{ width: '50%', marginTop: '-40px' }} onSubmit={handleProductSubmit} className='pt-4 '>
+                            <h4 style={{ marginBottom: '30px' }}>Put Your Information</h4>
                             <input
                                 onBlur={handleOnBlur}
                                 type="text"
@@ -108,10 +115,19 @@ const ProductDetail = () => {
                                 name='number'
                                 className="form-control"
                                 placeholder="Mobile number" />
-                            <button className='see-more' type="submit">Purchase order</button>
                         </form>
-                    </Grid>
-                </Grid>
+
+
+                        {/*--------------- payment from client ------------------*/}
+
+                        <div className='payment-info'>
+                            <h4 className='payment-title'>Pay for {details.productName}</h4>
+                            <Payment />
+                        </div>
+
+                    </div>
+                    <button style={{ marginTop: '50px' }} className='see-more' type="submit">Purchase order</button>
+                </div>
             </Container>
         </div>
     );

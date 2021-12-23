@@ -1,0 +1,27 @@
+
+
+.payment-title{
+    color: rgb(8, 8, 53);
+    font-weight: 700;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 30px;
+}
+
+.address-payment{
+    margin-top: 70px;
+    display: flex;
+    padding: 40px 20px;
+    box-shadow: 5px 5px 15px 15px rgb(209, 209, 209);
+}
+.payment-info{
+    width: 50%;
+    background-color: cornsilk;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 35px;
+    padding-right: 35px;
+}

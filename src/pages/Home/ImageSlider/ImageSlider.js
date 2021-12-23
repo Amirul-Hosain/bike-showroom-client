@@ -29,8 +29,7 @@ const ImageSlider = () => {
         AOS.refresh();
     });
     useEffect(() => {
-        // fetch('https://stormy-coast-38483.herokuapp.com/products')
-        fetch('http://localhost:5000/products')
+        fetch('https://stormy-coast-38483.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data.slice(5, 16)))
     }, [])
