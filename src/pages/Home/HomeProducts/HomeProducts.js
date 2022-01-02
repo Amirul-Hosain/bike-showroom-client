@@ -19,11 +19,11 @@ const HomeProducts = () => {
             <Box className='' sx={{ flexGrow: 1, marginTop: '150px' }}>
                 <h2 style={{ textAlign: 'center', fontSize: '35px', color: '#ffa500', marginBottom: '50px' }}>Our Products Collection</h2>
 
-                <div className=' home-products-all'  >
+                <div className='row container m-auto '>
                     {
                         products.map(product => <div
-                            className='home-product' id='home-product-id'>
-                            <img className='product-image' src={product.image} alt="" />
+                            className='home-product col-lg-3 col-md-4 col-12 me-2' id='home-product-id'>
+                            <img width='330' height='220' src={product.image} alt="" />
                             <div style={{ display: 'flex', justifyContent: 'space-between', padding: '25px 20px 0px 20px' }}>
                                 <div>
                                     <h4>{product.productName}</h4>
@@ -37,7 +37,7 @@ const HomeProducts = () => {
                         </div>)
                     }
                 </div>
-                <Link style={{}} className='see-more' to='/products'>See more <i class="fas fa-long-arrow-alt-right"></i></Link>
+                <Link className='see-more' to='/products'>See more <i class="fas fa-long-arrow-alt-right"></i></Link>
             </Box>
 
         </div>

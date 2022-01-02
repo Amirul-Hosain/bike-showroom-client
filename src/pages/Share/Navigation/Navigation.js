@@ -20,7 +20,7 @@ const Navigation = () => {
 
 
     const handleBackground = () => {
-        if (window.scrollY >= 80) {
+        if (window.scrollY >= 120) {
             setNavigation(true);
         } else {
             setNavigation(false)

@@ -54,7 +54,6 @@ const Review = () => {
                     className="form-control"
                     placeholder="Your feedback" />
                 <button type="submit" className="btn btn-primary">Send</button>
-
             </form>
         </div>
     );

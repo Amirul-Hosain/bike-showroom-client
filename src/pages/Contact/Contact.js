@@ -22,39 +22,36 @@ const Contact = () => {
     }, [])
     return (
         <div className='contact-container'>
-            <Container>
-                <h2 style={{ textAlign: 'center', paddingBottom: '100px' }}>Always Connect With Us</h2>
+            <h2 style={{ textAlign: 'center', paddingBottom: '100px' }}>Always Connect With Us</h2>
 
-                <Grid container spacing={2} style={{ margin: 'auto' }}>
+            <div className='row container contact-both m-auto'>
+                <div className='col-lg-6 col-md-12 col-12'>
+                    <div id="map" ></div>
+                </div>
 
-                    <Grid xs={12} md={6} style={{ marginRight: '30px' }}>
-                        <div id="map"></div>
-                    </Grid>
-
-                    <Grid xs={12} md={5} className='contact-form'>
-                        <div style={{ margin: '30px 0px' }}>
-                            <h2>Send Your Message</h2>
-                            <p>Drop a message and we will get back to you soon!</p>
-                        </div>
-                        <form >
-                            <div className='d-flex name-email'>
-                                <div className="mb-3 me-2  w-50%">
-                                    <input type="text" placeholder="Name" />
-                                </div>
-                                <div className="mb-3 w-50% ">
-                                    <input type="text" placeholder="Email" />
-                                </div>
+                <div className='contact-form col-lg-6 col-md-12 col-12'>
+                    <div style={{ margin: '30px 0px' }}>
+                        <h2>Send Your Message</h2>
+                        <p>Drop a message and we will get back to you soon!</p>
+                    </div>
+                    <form >
+                        <div className='name-email'>
+                            <div className="name-field">
+                                <input type="text" placeholder="Name" />
                             </div>
+                            <div className="email-field">
+                                <input type="text" placeholder="Email" />
+                            </div>
+                        </div>
 
-                            <input style={{ width: '415px', padding: '12px 10px', border: ' 1px solid rgb(199, 199, 199)', borderRadius: '5px' }} type="text" placeholder='Which Product Do you Need...' id="exampleInputPassword1" />
+                        <input className='need' type="text" placeholder='Which Product Do you Need...' id="exampleInputPassword1" />
 
-                            <textarea style={{ border: ' 1px solid rgb(199, 199, 199)', padding: '10px 10px', borderRadius: '5px', width: '415px', height: '80px ', marginTop: '20px' }} placeholder='Write your description...' aria-label="With textarea"></textarea>
-
-                            <button type="submit" className="contact-button">Send <i class="far fa-paper-plane"></i></button>
-                        </form>
-                    </Grid>
-                </Grid>
-            </Container>
+                        <textarea className='message' placeholder='Write your description...' aria-label="With textarea"></textarea>
+                        <br />
+                        <button type="submit" className="contact-button">Send <i class="far fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };

@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -16,10 +15,37 @@ const Reviews = () => {
 
     let settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     };
 
 
@@ -35,7 +61,7 @@ const Reviews = () => {
     }, [])
     return (
         <div className='review-comp' style={{ marginTop: '150px', padding: '100px 0px' }}>
-            <Container style={{ width: '75%', margin: 'auto' }}>
+            <Container style={{ margin: 'auto' }}>
                 <h2 style={{ fontSize: '35px', color: 'black', textAlign: 'center', marginBottom: '80px' }}>Our Client Says</h2>
                 <div>
                     <Slider {...settings}>
@@ -65,10 +91,7 @@ const Reviews = () => {
 
                 </div >
             </Container >
-
         </div >
-
-
     );
 };
 

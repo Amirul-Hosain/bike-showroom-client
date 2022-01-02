@@ -1,9 +1,9 @@
 
 .contact-container{
-    width: 100%;
     background-color: rgb(247, 247, 247);
     margin-top:50px;
-    padding: 80px 0px 150px 0px;
+    padding: 80px 0px 50px 0px;
+    position: relative;
 }
 .contact-button{
     margin-top: 20px;
@@ -17,13 +17,70 @@
     border: none;
 }
 .contact-form{
-    margin-left: 60px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.contact-form form input, textarea{
+    width: 90%;
+}
+#map { 
+    position: absolute; 
+    width: 500px;
+    height: 400px;
+    top: 230px;
+    margin-top: 40px;
 }
 .contact-title{
     text-align: center;
 }
-.name-email input{
-    padding: 8px 10px;
-    border: 1px solid rgb(199, 199, 199);
-    border-radius: 5px;
+.name-email{
+    display: flex;
 }
+.name-field input{
+    width: 400px;
+    padding: 5px 10px;
+}
+.email-field input{
+    width: 400px;
+    padding: 5px 10px;
+}
+.need{
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+.message{
+    height: 100px;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .contact-container{
+        background-color: rgb(247, 247, 247);
+        margin-top:50px;
+        padding: 80px 0px 350px 0px;
+        position: relative;
+    }
+    #map { 
+        position: absolute; 
+        width: 330px;
+        height: 300px;
+        top: 650px;
+        padding: 0%;
+        margin-left: -10px;
+    }
+    .contact-form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .name-email{
+        display: flex;
+        flex-direction: column;
+    }
+    .contact-form form input, textarea{
+        width: 300px;
+    }
+  }

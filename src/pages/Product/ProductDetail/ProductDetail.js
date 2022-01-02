@@ -60,17 +60,18 @@ const ProductDetail = () => {
             <Navigation></Navigation>
             <Container style={{ marginTop: '150px', paddingBottom: '100px' }}>
 
-                <Grid style={{ display: 'flex', }}>
-
-                    <img width='350' height='280' src={details?.image} alt="" />
+                <div className='single-product-detail ' >
+                    <div>
+                        <img width='350' height='280' src={details?.image} alt="" />
+                    </div>
                     <div style={{ display: 'flex', flexDirection: 'column', margin: '20px 0px 0px 15px' }}>
                         <h5>{details?.productName}</h5>
                         <p style={{ fontSize: '20px' }}>{details?.price}</p>
                         <p style={{ width: '50%' }}>{details?.description}</p>
                     </div>
-                </Grid>
+                </div>
 
-                <div>
+                <div >
                     <div className='address-payment'>
                         <form style={{ width: '50%', marginTop: '-40px' }} onSubmit={handleProductSubmit} className='pt-4 '>
                             <h4 style={{ marginBottom: '30px' }}>Put Your Information</h4>
